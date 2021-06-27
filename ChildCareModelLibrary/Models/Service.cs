@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,6 +11,7 @@ namespace ChildCareModelLibrary.Models
         {
             Feedbacks = new HashSet<Feedback>();
             MedicalExaminations = new HashSet<MedicalExamination>();
+            Reservations = new HashSet<Reservation>();
         }
 
         public int ServiceID { get; set; }
@@ -19,8 +21,8 @@ namespace ChildCareModelLibrary.Models
         public string Description { get; set; }
         public float Price { get; set; }
         public int? StatusID { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         public int? StaffID { get; set; }
 
         [ForeignKey(nameof(StaffID))]
@@ -37,6 +39,9 @@ namespace ChildCareModelLibrary.Models
 
         [InverseProperty(nameof(Feedback.Service))]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        [InverseProperty(nameof(Reservation.Service))]
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
         [InverseProperty(nameof(MedicalExamination.Service))]
         public virtual ICollection<MedicalExamination> MedicalExaminations { get; set; }

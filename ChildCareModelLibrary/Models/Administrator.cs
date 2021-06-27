@@ -5,12 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ChildCareModelLibrary.Models
 {
-    public partial class Manager
+    public partial class Administrator
     {
-        public Manager() { }
+        public Administrator() { }
 
         [Key]
-        public int ManagerID { get; set; }
+        public int AdminID { get; set; }
+        
         
     }
 }

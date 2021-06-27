@@ -16,19 +16,8 @@ namespace ChildCareModelLibrary.Models
 
         [Key]
         public int StaffID { get; set; }
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string Birthday { get; set; }
-        public string CitizenID { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
-        public int IdentityID { get; set; }
+       
         public int? SpecialtyID { get; set; }
-
-        [ForeignKey(nameof(IdentityID))]
-        [InverseProperty("Staffs")]
-        public virtual Identity Identity { get; set; }
 
         [ForeignKey(nameof(SpecialtyID))]
         [InverseProperty("Staffs")]

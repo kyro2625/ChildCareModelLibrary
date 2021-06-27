@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,8 +16,10 @@ namespace ChildCareModelLibrary.Models
         public int StaffID { get; set; }
 
         public string Description { get; set; }
-        public string CreadtedDate { get; set; }
-        public string UpdatedDate { get; set; }
+
+        public DateTime CreadtedDate { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
         [Required]
         public int StatusID { get; set; }
         [Required]

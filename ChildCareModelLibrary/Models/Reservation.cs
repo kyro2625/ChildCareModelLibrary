@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,10 +18,10 @@ namespace ChildCareModelLibrary.Models
         public int? PatientID { get; set; }
         public int ServiceID { get; set; }
         public int? StaffAssignedID { get; set; }
-        public int OpenTimeID { get; set; }
-        public string CheckInTime { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
+        public DateTime OpenTime { get; set; }
+        public DateTime CheckInTime { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
         [ForeignKey(nameof(CustomerID))]
         [InverseProperty("Reservations")]
@@ -30,13 +31,13 @@ namespace ChildCareModelLibrary.Models
         [InverseProperty("Reservations")]
         public virtual Patient Patient { get; set; }
 
+        [ForeignKey(nameof(ServiceID))]
+        [InverseProperty("Reservations")]
+        public virtual Service Service { get; set; }
+
         [ForeignKey(nameof(StaffAssignedID))]
         [InverseProperty("Reservations")]
         public virtual Staff Staff { get; set; }
-
-        [ForeignKey(nameof(OpenTimeID))]
-        [InverseProperty("Reservations")]
-        public virtual OpenTime OpenTime { get; set; }
 
         [InverseProperty(nameof(Feedback.Reservation))]
         public virtual ICollection<Feedback> Feedbacks { get; set; }

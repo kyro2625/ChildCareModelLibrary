@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChildCareModelLibrary.Migrations
 {
     [DbContext(typeof(ChildCareSystemDBContext))]
-    [Migration("20210627113044_Initial")]
+    [Migration("20210627152009_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,42 +21,16 @@ namespace ChildCareModelLibrary.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Admin", b =>
+            modelBuilder.Entity("ChildCareModelLibrary.Models.Administrator", b =>
                 {
                     b.Property<int>("AdminID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Birthday")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CitizenID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdentityID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("AdminID");
 
-                    b.HasIndex("IdentityID");
-
-                    b.ToTable("Admin");
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Blog", b =>
@@ -69,8 +43,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreadtedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreadtedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -87,8 +61,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<string>("Tile")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("BlogID");
 
@@ -123,35 +97,9 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Birthday")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CitizenID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdentityID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("CustomerID");
 
-                    b.HasIndex("IdentityID");
-
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Feedback", b =>
@@ -184,31 +132,7 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.HasIndex("ServiceID");
 
-                    b.ToTable("Feedback");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Identity", b =>
-                {
-                    b.Property<int>("IndentityID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IndentityID");
-
-                    b.ToTable("Identity");
+                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Manager", b =>
@@ -218,35 +142,9 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Birthday")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CitizenID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdentityID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ManagerID");
 
-                    b.HasIndex("IdentityID");
-
-                    b.ToTable("Manager");
+                    b.ToTable("Managers");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.MedicalExamination", b =>
@@ -256,8 +154,8 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Prescription")
                         .HasColumnType("nvarchar(max)");
@@ -268,8 +166,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<int?>("ServiceID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ExaminationID");
 
@@ -277,22 +175,7 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.HasIndex("ServiceID");
 
-                    b.ToTable("MedicalExamination");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.OpenTime", b =>
-                {
-                    b.Property<int>("OpenTimeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SpecificTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OpenTimeID");
-
-                    b.ToTable("OpenTime");
+                    b.ToTable("MedicalExaminations");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Patient", b =>
@@ -305,8 +188,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<string>("Birthday")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -317,14 +200,14 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<string>("PatientName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("PatientID");
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("Patient");
+                    b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Reservation", b =>
@@ -334,17 +217,17 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CheckInTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CheckInTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OpenTimeID")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("OpenTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("PatientID")
                         .HasColumnType("int");
@@ -355,20 +238,20 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<int?>("StaffAssignedID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ReservationID");
 
                     b.HasIndex("CustomerID");
 
-                    b.HasIndex("OpenTimeID");
-
                     b.HasIndex("PatientID");
+
+                    b.HasIndex("ServiceID");
 
                     b.HasIndex("StaffAssignedID");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Service", b =>
@@ -378,8 +261,8 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -402,8 +285,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Property<string>("Thumbnail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ServiceID");
 
@@ -413,7 +296,7 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.HasIndex("StatusID");
 
-                    b.ToTable("Service");
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Specialty", b =>
@@ -428,7 +311,7 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.HasKey("SpecialtyID");
 
-                    b.ToTable("Specialty");
+                    b.ToTable("Specialties");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Staff", b =>
@@ -438,40 +321,14 @@ namespace ChildCareModelLibrary.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Birthday")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CitizenID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdentityID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("SpecialtyID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UpdatedDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("StaffID");
-
-                    b.HasIndex("IdentityID");
 
                     b.HasIndex("SpecialtyID");
 
-                    b.ToTable("Staff");
+                    b.ToTable("Staffs");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Status", b =>
@@ -486,18 +343,7 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.HasKey("StatusID");
 
-                    b.ToTable("Status");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Admin", b =>
-                {
-                    b.HasOne("ChildCareModelLibrary.Models.Identity", "Identity")
-                        .WithMany("Admins")
-                        .HasForeignKey("IdentityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Identity");
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Blog", b =>
@@ -527,17 +373,6 @@ namespace ChildCareModelLibrary.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Customer", b =>
-                {
-                    b.HasOne("ChildCareModelLibrary.Models.Identity", "Identity")
-                        .WithMany("Customers")
-                        .HasForeignKey("IdentityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Identity");
-                });
-
             modelBuilder.Entity("ChildCareModelLibrary.Models.Feedback", b =>
                 {
                     b.HasOne("ChildCareModelLibrary.Models.Customer", "Customer")
@@ -557,17 +392,6 @@ namespace ChildCareModelLibrary.Migrations
                     b.Navigation("Reservation");
 
                     b.Navigation("Service");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Manager", b =>
-                {
-                    b.HasOne("ChildCareModelLibrary.Models.Identity", "Identity")
-                        .WithMany("Managers")
-                        .HasForeignKey("IdentityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Identity");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.MedicalExamination", b =>
@@ -604,15 +428,15 @@ namespace ChildCareModelLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ChildCareModelLibrary.Models.OpenTime", "OpenTime")
-                        .WithMany("Reservations")
-                        .HasForeignKey("OpenTimeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChildCareModelLibrary.Models.Patient", "Patient")
                         .WithMany("Reservations")
                         .HasForeignKey("PatientID");
+
+                    b.HasOne("ChildCareModelLibrary.Models.Service", "Service")
+                        .WithMany("Reservations")
+                        .HasForeignKey("ServiceID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ChildCareModelLibrary.Models.Staff", "Staff")
                         .WithMany("Reservations")
@@ -620,9 +444,9 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.Navigation("Customer");
 
-                    b.Navigation("OpenTime");
-
                     b.Navigation("Patient");
+
+                    b.Navigation("Service");
 
                     b.Navigation("Staff");
                 });
@@ -650,17 +474,9 @@ namespace ChildCareModelLibrary.Migrations
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Staff", b =>
                 {
-                    b.HasOne("ChildCareModelLibrary.Models.Identity", "Identity")
-                        .WithMany("Staffs")
-                        .HasForeignKey("IdentityID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChildCareModelLibrary.Models.Specialty", "Specialty")
                         .WithMany("Staffs")
                         .HasForeignKey("SpecialtyID");
-
-                    b.Navigation("Identity");
 
                     b.Navigation("Specialty");
                 });
@@ -676,22 +492,6 @@ namespace ChildCareModelLibrary.Migrations
 
                     b.Navigation("Patients");
 
-                    b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.Identity", b =>
-                {
-                    b.Navigation("Admins");
-
-                    b.Navigation("Customers");
-
-                    b.Navigation("Managers");
-
-                    b.Navigation("Staffs");
-                });
-
-            modelBuilder.Entity("ChildCareModelLibrary.Models.OpenTime", b =>
-                {
                     b.Navigation("Reservations");
                 });
 
@@ -712,6 +512,8 @@ namespace ChildCareModelLibrary.Migrations
                     b.Navigation("Feedbacks");
 
                     b.Navigation("MedicalExaminations");
+
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("ChildCareModelLibrary.Models.Specialty", b =>

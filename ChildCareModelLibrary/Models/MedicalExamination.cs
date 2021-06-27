@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,8 +14,9 @@ namespace ChildCareModelLibrary.Models
         public int? ReservationID { get; set; }
         public int? ServiceID { get; set; }
         public string Prescription { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
         [ForeignKey(nameof(ReservationID))]
         [InverseProperty("MedicalExaminations")]

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,9 +17,9 @@ namespace ChildCareModelLibrary.Models
         public int Gender { get; set; }
         [Required]
         public int CustomerID { get; set; }
-        public string Birthday { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
+        public DateTime Birthday { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
 
         [ForeignKey(nameof(CustomerID))]
